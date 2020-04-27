@@ -12,40 +12,36 @@
 // Output: [-1,-1]
 
 var searchRange = function(nums, target) {
-    if(nums.length === 0){
-        return [-1, -1];
-    }
+    // if(nums.length === 0){
+    //     return [-1, -1];
+    // }
     
-    var start = 0;
-    var end = nums.length - 1;
-    var mid = start + (end - start)/2;
-    var res = [];
+    // var start = 0;
+    // var end = nums.length - 1;
+    // var mid = start + (end - start)/2;
+    // var res = [];
 
-    while(start + 1 < end){
-        if(nums[mid] === target){
-            if(nums[mid - 1] === target){
-                res.push(nums[mid - 1]);
-            }
-            else if(nums[mid + 1] === target){
-                res.push(nums[mid + 1]);
-            }
-            end = mid;
-        } 
-        else if(nums[mid] < target){
-            start = mid;
-        }
-        else if(nums[mid] > target){
-            end = mid;
-        }
-    }
-    if(nums[start] === target){
-        return res.push(start);
-    }
-    if(nums[end] === target){
-        return res.push(end);
-    }
-    else{
-        return [-1, -1];
-    }
+    // while(start + 1 < end){
+    //     if(nums[mid] === target){
+    //         end = mid;
+    //     } 
+    //     else if(nums[mid] < target){
+    //         start = mid;
+    //     }
+    //     else if(nums[mid] > target){
+    //         end = mid;
+    //     }
+    // }
+    // if(nums[start] === target){
+    //     res.push(start);
+    //     return res;
+    // }
+    // if(nums[end] === target){
+    //     res.push(end);
+    //     return res;
+    // }
+    // else{
+    //     return [-1, -1];
+    // }
     
 };
