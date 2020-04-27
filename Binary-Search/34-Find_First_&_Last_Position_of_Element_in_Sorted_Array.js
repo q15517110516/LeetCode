@@ -12,36 +12,63 @@
 // Output: [-1,-1]
 
 var searchRange = function(nums, target) {
-    // if(nums.length === 0){
-    //     return [-1, -1];
-    // }
+    if(nums.length === 0){
+        return [-1, -1];
+    }
     
-    // var start = 0;
-    // var end = nums.length - 1;
-    // var mid = start + (end - start)/2;
-    // var res = [];
+    var start = 0;
+    var end = nums.length - 1;
+    var mid = start + (end - start)/2;
+    var res = [];
 
-    // while(start + 1 < end){
-    //     if(nums[mid] === target){
-    //         end = mid;
-    //     } 
-    //     else if(nums[mid] < target){
-    //         start = mid;
-    //     }
-    //     else if(nums[mid] > target){
-    //         end = mid;
-    //     }
-    // }
-    // if(nums[start] === target){
-    //     res.push(start);
-    //     return res;
-    // }
-    // if(nums[end] === target){
-    //     res.push(end);
-    //     return res;
-    // }
-    // else{
-    //     return [-1, -1];
-    // }
+    // Left Position
+    while(start + 1 < end){
+        if(nums[mid] === target){
+            end = mid;
+        } 
+        else if(nums[mid] < target){
+            start = mid;
+        }
+        else if(nums[mid] > target){
+            end = mid;
+        }
+    }
+    if(nums[start] === target){
+        res[0] = start;
+    }
+    else if(nums[end] === target){
+        res[0] = end;
+    }
+    else{
+        res[0] = res[1] = -1;
+        // return res;
+    }
+    
+    
+
+    // Right Position
+    while(start + 1 < end){
+        if(nums[mid] === target){
+            start = mid;
+        } 
+        else if(nums[mid] < target){
+            start = mid;
+        }
+        else if(nums[mid] > target){
+            end = mid;
+        }
+    }
+    if(nums[start] === target){
+        res[1] = start;
+    }
+    else if(nums[end] === target){
+        res[1] = end;
+    }
+    else{
+        res[0] = res[1] = -1;
+        // return res;
+    }
+    return res;
+
     
 };
