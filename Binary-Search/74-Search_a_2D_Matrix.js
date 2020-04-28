@@ -31,5 +31,11 @@
     @return {boolean}
  */
 var searchMatrix = function(matrix, target) {
+    if(matrix === [][]){
+        return false;
+    }
+    let start = 0;
+    let end = matrix[0].length - 1;
+
     
 };
