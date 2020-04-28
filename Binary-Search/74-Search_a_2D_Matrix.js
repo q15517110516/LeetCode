@@ -31,11 +31,24 @@
     @return {boolean}
  */
 var searchMatrix = function(matrix, target) {
-    if(matrix === [][]){
+    if(matrix.length === 0){
         return false;
     }
     let start = 0;
-    let end = matrix[0].length - 1;
+    let end = matrix.length - 1;
+    let innerLen = matrix[0].length;
+    let innerLast = innerLen - 1;
 
-    
+    while(start + 1 < end){
+        let mid = parseInt(start + (end - start)/2);
+        if(matrix[mid][innerLast] === target){
+            return true;
+        }
+        else if(matrix[mid][innerLast] < target){
+            start = mid;
+        }
+        else if(matrix[mid][innerLast] > target){
+            end = mid;
+        }
+    }
 };
