@@ -18,13 +18,11 @@ var searchRange = function(nums, target) {
     
     let start = 0;
     let end = nums.length - 1;
-    let left = 0;
-    let right = 0;
     let res = [];
 
     // Left Position
     while(start + 1 < end){
-        let mid = start + (end - start)/2;
+        let mid = parseInt(start + (end - start)/2);
         if(nums[mid] === target){
             end = mid;
         } 
@@ -36,24 +34,22 @@ var searchRange = function(nums, target) {
         }
     }
     if(nums[start] === target){
-        left = start;
+        res.push(start);
     }
     else if(nums[end] === target){
-        left = end;
+        res.push(end);
     }
     else{
         return [-1, -1];
     }
-    
-    res.push(left);
-    
+
     
     
+    // Right Position
     start = 0;
     end = nums.length - 1;
-    // Right Position
     while(start + 1 < end){
-        mid = start + (end - start)/2;
+        mid = parseInt(start + (end - start)/2);
         if(nums[mid] === target){
             start = mid;
         } 
@@ -65,16 +61,16 @@ var searchRange = function(nums, target) {
         }
     }
     if(nums[end] === target){
-        right = end;
+        res.push(end);
     }
     else if(nums[start] === target){
-        right = start;
+        res.push(start);
     }
     else{
         return [-1, -1];
     }
     
-    res.push(right);
+
     return res;
     
 };
