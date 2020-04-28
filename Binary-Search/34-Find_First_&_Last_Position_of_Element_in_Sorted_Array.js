@@ -16,59 +16,65 @@ var searchRange = function(nums, target) {
         return [-1, -1];
     }
     
-    var start = 0;
-    var end = nums.length - 1;
-    var mid = start + (end - start)/2;
-    var res = [];
+    let start = 0;
+    let end = nums.length - 1;
+    let left = 0;
+    let right = 0;
+    let res = [];
 
     // Left Position
     while(start + 1 < end){
+        let mid = start + (end - start)/2;
         if(nums[mid] === target){
             end = mid;
         } 
         else if(nums[mid] < target){
             start = mid;
         }
-        else if(nums[mid] > target){
+        else{
             end = mid;
         }
     }
     if(nums[start] === target){
-        res[0] = start;
+        left = start;
     }
     else if(nums[end] === target){
-        res[0] = end;
+        left = end;
     }
     else{
-        res[0] = res[1] = -1;
-        // return res;
+        return [-1, -1];
     }
     
+    res.push(left);
     
-
+    
+    
+    start = 0;
+    end = nums.length - 1;
     // Right Position
     while(start + 1 < end){
+        mid = start + (end - start)/2;
         if(nums[mid] === target){
             start = mid;
         } 
         else if(nums[mid] < target){
             start = mid;
         }
-        else if(nums[mid] > target){
+        else{
             end = mid;
         }
     }
-    if(nums[start] === target){
-        res[1] = start;
+    if(nums[end] === target){
+        right = end;
     }
-    else if(nums[end] === target){
-        res[1] = end;
+    else if(nums[start] === target){
+        right = start;
     }
     else{
-        res[0] = res[1] = -1;
-        // return res;
+        return [-1, -1];
     }
+    
+    res.push(right);
     return res;
-
     
 };
