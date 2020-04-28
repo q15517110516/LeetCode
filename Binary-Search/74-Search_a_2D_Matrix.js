@@ -55,53 +55,53 @@ var searchMatrix = function(matrix, target) {
     }
 
     // Inner array start & end
-    let start1 = 0;
-    let end1 = matrix[start].length;
-    let end2 = matrix[end].length;
+    let arrayStart = 0;
+    let array1End = matrix[start].length;
+    let array2End = matrix[end].length;
 
     if(matrix[start][innerLast] < target){
-        while(start1 + 1 < end1){
-            mid = parseInt(start1 + (end1 - start1)/2);
+        while(arrayStart + 1 < array1End){
+            mid = parseInt(arrayStart + (array1End - arrayStart)/2);
             if(matrix[mid] === target){
                 return true;
             }
             else if(matrix[mid] < target){
-                start1 = mid;
+                arrayStart = mid;
             }
             else{
-                end1 = mid;
+                array1End = mid;
             }
         }
 
-        if(matrix[start1] = target){
+        if(matrix[arrayStart] === target){
             return true;
         }
-        if(matrix[end1] = target){
+        if(matrix[array1End] === target){
             return true;
         }
         return false;
 
     }
 
-    start1 = 0;
+    arrayStart = 0;
     if(matrix[start][innerLast] > target){
-        while(start1 + 1 < end2){
-            mid = parseInt(start1 + (end2 - start1)/2);
+        while(arrayStart + 1 < array2End){
+            mid = parseInt(arrayStart + (array2End - arrayStart)/2);
             if(matrix[mid] === target){
                 return true;
             }
             else if(matrix[mid] < target){
-                start1 = mid;
+                arrayStart = mid;
             }
             else{
-                end2 = mid;
+                array2End = mid;
             }
         }
 
-        if(matrix[start1] = target){
+        if(matrix[arrayStart] === target){
             return true;
         }
-        if(matrix[end1] = target){
+        if(matrix[array1End] === target){
             return true;
         }
         return false;
