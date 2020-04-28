@@ -23,11 +23,12 @@
 
 var searchInsert = function(nums, target) {
     
+    
     let start = 0;
     let end = nums.length - 1;
     
     while(start + 1 < end){
-        let mid = start + (end-start)/2;
+        let mid = parseInt(start + (end-start)/2);
         if(nums[mid] === target){
             return mid;
         }
@@ -48,6 +49,8 @@ var searchInsert = function(nums, target) {
     else{
         return end+1;
     }
+
+
 
     
 };
