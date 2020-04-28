@@ -22,30 +22,32 @@
 // Output: 0
 
 var searchInsert = function(nums, target) {
-    if(nums.length === 0){
-        return -1;
-    }
-
-    var start = 0;
-    var end = nums.length - 1;
-    var mid = start + (end-start)/2;
-
+    
+    let start = 0;
+    let end = nums.length - 1;
+    
     while(start + 1 < end){
+        let mid = start + (end-start)/2;
         if(nums[mid] === target){
-            end = mid;
+            return mid;
         }
         else if(nums[mid] < target){
             start = mid;
         }
-        else if(nums[mid] > target){
+        else{
             end = mid;
         }
     }
-    if(nums[end] === target || nums[end] > target){
-        return end+1;
-    }
-    if(nums[start] === target || nums[start] < target){
+    
+    if(nums[start] >= target){
         return start;
     }
+    else if(nums[end] >= target){
+        return end;
+    }
+    else{
+        return end+1;
+    }
+
     
 };
