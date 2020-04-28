@@ -31,24 +31,67 @@
     @return {boolean}
  */
 var searchMatrix = function(matrix, target) {
+
+    // Method 1
+    // if(matrix.length === 0){
+    //     return false;
+    // }
+    // let start = 0;
+    // let end = matrix.length - 1;
+    // let innerLen = matrix[0].length;
+    // let innerLast = innerLen - 1;
+
+    // while(start + 1 < end){
+    //     let mid = parseInt(start + (end - start)/2);
+    //     if(matrix[mid][innerLast] === target){
+    //         return true;
+    //     }
+    //     else if(matrix[mid][innerLast] < target){
+    //         start = mid;
+    //     }
+    //     else if(matrix[mid][innerLast] > target){
+    //         end = mid;
+    //     }
+    // }
+
+    // Method 2
     if(matrix.length === 0){
         return false;
     }
+
+    let res = [];
+
+    for(let i = 0; i < matrix.length; i++){
+        res = res.concat(matrix[i]);
+    }
+
     let start = 0;
-    let end = matrix.length - 1;
-    let innerLen = matrix[0].length;
-    let innerLast = innerLen - 1;
+    let end = res.length;
 
     while(start + 1 < end){
         let mid = parseInt(start + (end - start)/2);
-        if(matrix[mid][innerLast] === target){
+        if(res[mid] === target){
             return true;
         }
-        else if(matrix[mid][innerLast] < target){
+        else if(res[mid] < target){
             start = mid;
         }
-        else if(matrix[mid][innerLast] > target){
+        else{
             end = mid;
         }
     }
+
+
+    if(res[start] === target){
+        return true;
+    }
+    if(res[end] === target){
+        return true;
+    }
+
+    return false;
+
+    
+
+
 };
