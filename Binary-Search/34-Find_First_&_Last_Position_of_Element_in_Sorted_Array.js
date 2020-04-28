@@ -11,6 +11,11 @@
 // Input: nums = [5,7,7,8,8,10], target = 6
 // Output: [-1,-1]
 
+/*
+    @param {number[]} nums
+    @param {number} target
+    @return {number[]}
+ */
 var searchRange = function(nums, target) {
     if(nums.length === 0){
         return [-1, -1];

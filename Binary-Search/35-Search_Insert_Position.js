@@ -21,6 +21,11 @@
 // Input: [1,3,5,6], 0
 // Output: 0
 
+/*
+    @param {number[]} nums
+    @param {number} target
+    @return {number}
+ */
 var searchInsert = function(nums, target) {
     
     

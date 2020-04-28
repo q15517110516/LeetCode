@@ -7,6 +7,11 @@
 // Because nums[0] + nums[1] = 2 + 7 = 9,
 // return [0, 1].
 
+/*
+    @param {number[]} nums
+    @param {number} target
+    @return {number[]}
+ */
 var twoSum = function(nums, target){
     var res = [];
     for(var i = 0; i < nums.length; i++){
