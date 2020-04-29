@@ -54,57 +54,61 @@ var searchMatrix = function(matrix, target) {
         }
     }
 
+
+    
     // Inner array start & end
     let arrayStart = 0;
     let array1End = matrix[start].length;
     let array2End = matrix[end].length;
 
-    if(matrix[start][innerLast] < target){
+    console.log(matrix[start][innerLast])
+    console.log(matrix[end][innerLast])
+    
+    if(matrix[start][innerLast] === target){
+        return true;
+    }
+    else if(matrix[start][innerLast] > target){
         while(arrayStart + 1 < array1End){
             mid = parseInt(arrayStart + (array1End - arrayStart)/2);
-            if(matrix[mid] === target){
+            if(matrix[start][mid] === target){
                 return true;
             }
-            else if(matrix[mid] < target){
+            else if(matrix[start][mid] < target){
                 arrayStart = mid;
             }
-            else{
+            else if(matrix[end][mid] > target){
                 array1End = mid;
             }
         }
 
-        if(matrix[arrayStart] === target){
+        if(matrix[start][arrayStart] === target){
             return true;
         }
-        if(matrix[array1End] === target){
+        if(matrix[start][array1End] === target){
             return true;
         }
-        return false;
 
     }
-
-    arrayStart = 0;
-    if(matrix[start][innerLast] > target){
+    else{
         while(arrayStart + 1 < array2End){
             mid = parseInt(arrayStart + (array2End - arrayStart)/2);
-            if(matrix[mid] === target){
+            if(matrix[end][mid] === target){
                 return true;
             }
-            else if(matrix[mid] < target){
+            else if(matrix[end][mid] < target){
                 arrayStart = mid;
             }
-            else{
+            else if(matrix[end][mid] > target){
                 array2End = mid;
             }
         }
 
-        if(matrix[arrayStart] === target){
+        if(matrix[end][arrayStart] === target){
             return true;
         }
-        if(matrix[array1End] === target){
+        if(matrix[end][array2End] === target){
             return true;
         }
-        return false;
     }
 
     return false;
