@@ -147,50 +147,54 @@ var searchMatrix = function(matrix, target) {
 
     // return false;
 
+
     // Method 3: One level Binary Search
-    if(matrix.length === 0){
-        return false;
-    }
+    // if(matrix.length === 0){
+    //     return false;
+    // }
 
-    let array = [];
+    // let array = [];
+    // let innerLast = matrix[0].length - 1;
 
-    for(let i = 0; i < matrix.length; i++){
-        let innerLast = matrix[0].length - 1;
-        if(matrix[i][innerLast] > target){
-            array = matrix[i];
-            break;
-        }
-        else if(matrix[i][innerLast] < target){
-            array = matrix[i + 1];
-            break;
-        }
-        else{
-            return true;
-        }
-    }
+    //TODO (i=0, i < 0?)(Testcase: [[1]], 1)
+    // for(let i = 0; i < matrix.length - 1; i++){
+    //     if(matrix[i][innerLast] === target){
+    //         return true;
+    //     }
+    //     else if(matrix[i][innerLast] > target){
+    //         array = matrix[i];
+    //         break;
+    //     }
+    //TODO (if i < matrix.length; [i+1] undefined?)
+    //     else if(matrix[i][innerLast] > target && matrix[i+1][innerLast] < target){
+    //         array = matrix[i + 1];
+    //         break;
+    //     }
+        
+    // }
+    
+    // let start = 0;
+    // let end = array.length - 1;
 
-    let start = 0;
-    let end = array.length - 1;
+    // while(start + 1 < end){
+    //     let mid = parseInt(start + (end - start)/2);
+    //     if(array[mid] === target){
+    //         return true;
+    //     }
+    //     else if(array[mid] < target){
+    //         start = mid;
+    //     }
+    //     else{
+    //         end = mid;
+    //     }
+    // }
+    // if(array[start] === target){
+    //     return true;
+    // }
+    // if(array[end] === target){
+    //     return true;
+    // }
 
-    while(start + 1 < end){
-        let mid = parseInt(start + (end - start)/2);
-        if(array[mid] === target){
-            return true;
-        }
-        else if(array[mid] < target){
-            start = mid;
-        }
-        else{
-            end = mid;
-        }
-    }
-    if(array[start] === target){
-        return true;
-    }
-    if(array[end] === target){
-        return true;
-    }
-
-    return false;
+    // return false;
 
 };
