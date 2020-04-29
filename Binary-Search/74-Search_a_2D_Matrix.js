@@ -158,16 +158,39 @@ var searchMatrix = function(matrix, target) {
         let innerLast = matrix[0].length - 1;
         if(matrix[i][innerLast] > target){
             array = matrix[i];
+            break;
         }
         else if(matrix[i][innerLast] < target){
-            array = matrix[i + 1]
+            array = matrix[i + 1];
+            break;
         }
         else{
             return true;
         }
     }
 
+    let start = 0;
+    let end = array.length - 1;
 
+    while(start + 1 < end){
+        let mid = parseInt(start + (end - start)/2);
+        if(array[mid] === target){
+            return true;
+        }
+        else if(array[mid] < target){
+            start = mid;
+        }
+        else{
+            end = mid;
+        }
+    }
+    if(array[start] === target){
+        return true;
+    }
+    if(array[end] === target){
+        return true;
+    }
 
+    return false;
 
 };
