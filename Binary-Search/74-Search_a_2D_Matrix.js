@@ -32,85 +32,85 @@
  */
 var searchMatrix = function(matrix, target) {
 
-    // Method 1: Using Binary Search to filter the last 2 arrays
-    // if(matrix.length === 0){
-    //     return false;
-    // }
-    // let start = 0;
-    // let end = matrix.length - 1;
-    // let innerLen = matrix[0].length;
-    // let innerLast = innerLen - 1;
+    //NOTE Method 1: Using Binary Search to filter the last 2 arrays
+    if(matrix.length === 0){
+        return false;
+    }
+    let start = 0;
+    let end = matrix.length - 1;
+    let innerLen = matrix[0].length;
+    let innerLast = innerLen - 1;
 
-    // while(start + 1 < end){
-    //     let mid = parseInt(start + (end - start)/2);
-    //     if(matrix[mid][innerLast] === target){
-    //         return true;
-    //     }
-    //     else if(matrix[mid][innerLast] < target){
-    //         start = mid;
-    //     }
-    //     else if(matrix[mid][innerLast] > target){
-    //         end = mid;
-    //     }
-    // }
+    while(start + 1 < end){
+        let mid = parseInt(start + (end - start)/2);
+        if(matrix[mid][innerLast] === target){
+            return true;
+        }
+        else if(matrix[mid][innerLast] < target){
+            start = mid;
+        }
+        else if(matrix[mid][innerLast] > target){
+            end = mid;
+        }
+    }
 
 
     
-    // // Inner array start & end
-    // let arrayStart = 0;
-    // let array1End = matrix[start].length;
-    // let array2End = matrix[end].length;
+    // Inner array start & end
+    let arrayStart = 0;
+    let array1End = matrix[start].length;
+    let array2End = matrix[end].length;
     
-    // if(matrix[start][innerLast] === target){
-    //     return true;
-    // }
-    // else if(matrix[start][innerLast] > target){
-    //     while(arrayStart + 1 < array1End){
-    //         mid = parseInt(arrayStart + (array1End - arrayStart)/2);
-    //         if(matrix[start][mid] === target){
-    //             return true;
-    //         }
-    //         else if(matrix[start][mid] < target){
-    //             arrayStart = mid;
-    //         }
-    //         else if(matrix[end][mid] > target){
-    //             array1End = mid;
-    //         }
-    //     }
+    if(matrix[start][innerLast] === target){
+        return true;
+    }
+    else if(matrix[start][innerLast] > target){
+        while(arrayStart + 1 < array1End){
+            mid = parseInt(arrayStart + (array1End - arrayStart)/2);
+            if(matrix[start][mid] === target){
+                return true;
+            }
+            else if(matrix[start][mid] < target){
+                arrayStart = mid;
+            }
+            else if(matrix[end][mid] > target){
+                array1End = mid;
+            }
+        }
 
-    //     if(matrix[start][arrayStart] === target){
-    //         return true;
-    //     }
-    //     if(matrix[start][array1End] === target){
-    //         return true;
-    //     }
+        if(matrix[start][arrayStart] === target){
+            return true;
+        }
+        if(matrix[start][array1End] === target){
+            return true;
+        }
 
-    // }
-    // else{
-    //     while(arrayStart + 1 < array2End){
-    //         mid = parseInt(arrayStart + (array2End - arrayStart)/2);
-    //         if(matrix[end][mid] === target){
-    //             return true;
-    //         }
-    //         else if(matrix[end][mid] < target){
-    //             arrayStart = mid;
-    //         }
-    //         else if(matrix[end][mid] > target){
-    //             array2End = mid;
-    //         }
-    //     }
+    }
+    else{
+        while(arrayStart + 1 < array2End){
+            mid = parseInt(arrayStart + (array2End - arrayStart)/2);
+            if(matrix[end][mid] === target){
+                return true;
+            }
+            else if(matrix[end][mid] < target){
+                arrayStart = mid;
+            }
+            else if(matrix[end][mid] > target){
+                array2End = mid;
+            }
+        }
 
-    //     if(matrix[end][arrayStart] === target){
-    //         return true;
-    //     }
-    //     if(matrix[end][array2End] === target){
-    //         return true;
-    //     }
-    // }
+        if(matrix[end][arrayStart] === target){
+            return true;
+        }
+        if(matrix[end][array2End] === target){
+            return true;
+        }
+    }
 
-    // return false;
+    return false;
 
-    // Method 2: Using 'concat' to combine all the arrays into one array, then use Binary Search
+    //NOTE Method 2: Using 'concat' to combine all the arrays into one array, then use Binary Search
     // if(matrix.length === 0){
     //     return false;
     // }
@@ -148,7 +148,7 @@ var searchMatrix = function(matrix, target) {
     // return false;
 
 
-    // Method 3: One level Binary Search
+    //NOTE Method 3: One level Binary Search
     // if(matrix.length === 0){
     //     return false;
     // }
