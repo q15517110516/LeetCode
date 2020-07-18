@@ -45,7 +45,6 @@ var solution = function(isBadVersion) {
             else if(isBadVersion(mid) === true){
                 end = mid;
             }
-
         }
 
         if(isBadVersion(start) === true){
