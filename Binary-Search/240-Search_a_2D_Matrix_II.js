@@ -45,12 +45,36 @@ var searchMatrix = function(matrix, target) {
     if(matrix.length === 0){
         return false;
     }
-
-    let m = matrix.length;
-    let n = matrix[0].length;
-    let nStart = 0;
-    let nEnd = n - 1;
-
-    while()
-
+    for(let i = 0; i < matrix.length; i++){
+        let row = matrix[i];
+        if(hasValue(row, target)){
+            return true;
+        };
+    }
+    return false;
 };
+
+var hasValue = function(row, value){
+    let start = 0;
+    let end = row.length - 1;
+    while(start + 1 < end){
+        let mid = parseInt(start + (end - start)/2);
+
+        if(row[mid] === value){
+            return true;
+        }
+        else if(row[mid] < value){
+            start = mid;
+        }
+        else{
+            end = mid;
+        }
+    }
+    if(row[start] === value){
+        return true;
+    }
+    if(row[end] === value){
+        return true;
+    }
+    return false;
+}
