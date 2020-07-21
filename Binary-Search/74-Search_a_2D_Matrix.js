@@ -32,7 +32,8 @@
  */
 var searchMatrix = function(matrix, target) {
 
-    //NOTE Method 1: Using Binary Search to filter the last 2 arrays
+    //NOTE 
+    // Method 1: Using Binary Search to filter the last 2 arrays
     if(matrix.length === 0){
         return false;
     }
@@ -110,91 +111,43 @@ var searchMatrix = function(matrix, target) {
 
     return false;
 
-    //NOTE Method 2: Using 'concat' to combine all the arrays into one array, then use Binary Search
-    // if(matrix.length === 0){
-    //     return false;
-    // }
+    //NOTE 
+    // Method 2: Using 'concat' to combine all the arrays into one array, then use Binary Search
+    if(matrix.length === 0){
+        return false;
+    }
 
-    // let res = [];
+    let res = [];
 
-    // for(let i = 0; i < matrix.length; i++){
-    //     res = res.concat(matrix[i]);
-    // }
+    for(let i = 0; i < matrix.length; i++){
+        res = res.concat(matrix[i]);
+    }
 
-    // let start = 0;
-    // let end = res.length;
+    let start = 0;
+    let end = res.length;
 
-    // while(start + 1 < end){
-    //     let mid = parseInt(start + (end - start)/2);
-    //     if(res[mid] === target){
-    //         return true;
-    //     }
-    //     else if(res[mid] < target){
-    //         start = mid;
-    //     }
-    //     else{
-    //         end = mid;
-    //     }
-    // }
-
-
-    // if(res[start] === target){
-    //     return true;
-    // }
-    // if(res[end] === target){
-    //     return true;
-    // }
-
-    // return false;
+    while(start + 1 < end){
+        let mid = parseInt(start + (end - start)/2);
+        if(res[mid] === target){
+            return true;
+        }
+        else if(res[mid] < target){
+            start = mid;
+        }
+        else{
+            end = mid;
+        }
+    }
 
 
-    //NOTE Method 3: One level Binary Search
-    // if(matrix.length === 0){
-    //     return false;
-    // }
+    if(res[start] === target){
+        return true;
+    }
+    if(res[end] === target){
+        return true;
+    }
 
-    // let array = [];
-    // let innerLast = matrix[0].length - 1;
+    return false;
 
-    //TODO (i=0, i < 0?)(Testcase: [[1]], 1)
-    // for(let i = 0; i < matrix.length - 1; i++){
-    //     if(matrix[i][innerLast] === target){
-    //         return true;
-    //     }
-    //     else if(matrix[i][innerLast] > target){
-    //         array = matrix[i];
-    //         break;
-    //     }
-    //TODO (if i < matrix.length; [i+1] undefined?)
-    //     else if(matrix[i][innerLast] > target && matrix[i+1][innerLast] < target){
-    //         array = matrix[i + 1];
-    //         break;
-    //     }
-        
-    // }
-    
-    // let start = 0;
-    // let end = array.length - 1;
-
-    // while(start + 1 < end){
-    //     let mid = parseInt(start + (end - start)/2);
-    //     if(array[mid] === target){
-    //         return true;
-    //     }
-    //     else if(array[mid] < target){
-    //         start = mid;
-    //     }
-    //     else{
-    //         end = mid;
-    //     }
-    // }
-    // if(array[start] === target){
-    //     return true;
-    // }
-    // if(array[end] === target){
-    //     return true;
-    // }
-
-    // return false;
 
 };
