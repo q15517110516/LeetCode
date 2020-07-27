@@ -27,11 +27,12 @@
 // 
 
 var merge = function(nums1, m, nums2, n) {
-    
+
     let i = m - 1;
     let j = n - 1;
     let index = m + n - 1;
     
+    // While-Loop
     while(i >= 0 && j >= 0){
         if(nums2[j] > nums1[i]){
             nums1[index] = nums2[j];
@@ -55,4 +56,20 @@ var merge = function(nums1, m, nums2, n) {
         index--;
         j--;
     }
+
+
+    // For-Loop
+    // for(let index = m + n - 1; index >= 0; index--){
+    //     if(j < 0){
+    //         break;
+    //     }
+    //     if(nums1[i] > nums2[j]){
+    //         nums1[index] = nums1[i];
+    //         i--;
+    //     }
+    //     else{
+    //         nums1[index] = nums2[j];
+    //         j--;
+    //     }
+    // }
 };
