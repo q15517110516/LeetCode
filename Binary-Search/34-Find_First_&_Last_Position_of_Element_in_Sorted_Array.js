@@ -47,7 +47,6 @@ var searchRange = function(nums, target) {
     else{
         return [-1, -1];
     }
-
     
     
     // Right Position
