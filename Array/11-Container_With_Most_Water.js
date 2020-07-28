@@ -11,11 +11,11 @@
     @param {number[]} height
     @return {number}
  */
-var m
+
 var maxArea = function(height) {
-    var max = 0, 
-        l = 0, 
-        r = height.length - 1;
+    let max = 0; 
+    let l = 0;
+    let r = height.length - 1;
 
     while(l <= r){
         max = Math.max( max, (Math.min(height[l], height[r]) * (r - l)) );
