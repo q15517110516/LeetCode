@@ -15,13 +15,30 @@
 // @return {number[]}
 // 
 
-// Method 1: Quick Sort
 var sortArray = function(nums) {
-    if(nums.length > 1){
-        quickSort(nums, 0, nums.length - 1);
+
+    if(nums.length < 2){
+        return nums;
     }
+    // Method 1: Quick Sort
+    quickSort(nums, 0, nums.length - 1);
     return nums;
+
+    // Method 2: Merge Sort
+    let mid = Math.floor(nums.length / 2);
+    
+    // Divide array into two arrays
+    let left = nums.slice(0, mid);
+    let right = nums.slice(mid);
+
+    return mergeSort(sortArray(left), sortArray(right));
 };
+
+var swap = function(nums, num1, num2){
+    let temp = nums[num1];
+    nums[num1] = nums[num2];
+    nums[num2] = temp;
+}
 
 var quickSort = function(nums, start, end){
 
@@ -29,7 +46,7 @@ var quickSort = function(nums, start, end){
         return;
     }
     // Find pivot
-    let mid = Math.floor((start + end)/2);
+    let mid = Math.floor((start + end) / 2);
     let pivot = nums[mid];
 
     let left = start;
@@ -47,7 +64,7 @@ var quickSort = function(nums, start, end){
             right--;
         }
 
-        //Check if left pointer is less than or equal to right pointer, then saw the elements in locations of these pointers.
+        // Check if left pointer is less than or equal to right pointer, then saw the elements in locations of these pointers.
         if(left <= right){
             swap(nums, left, right);
 
@@ -61,9 +78,23 @@ var quickSort = function(nums, start, end){
 
 }
 
+var mergeSort = function(left, right){
+    
+    let resultArray = [];
+    let leftIndex = 0; // left array index
+    let rightIndex = 0; // right array index
 
-var swap = function(nums, num1, num2){
-    let temp = nums[num1];
-    nums[num1] = nums[num2];
-    nums[num2] = temp;
+    while(leftIndex < left.length && rightIndex < right.length){
+        if(left[leftIndex] < right[rightIndex]){
+            resultArray.push(left[leftIndex]);
+            leftIndex++;
+        }else{
+            resultArray.push(right[rightIndex]);
+            rightIndex++;
+        }
+    }
+
+    return resultArray.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
+
+
