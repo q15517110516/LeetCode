@@ -56,16 +56,16 @@ var lowestCommonAncestor = function(root, p, q) {
         return root;
     }
     let rootVal = root.val;
-    let left = p.val;
-    let right = q.val;
+    let pVal = p.val;
+    let qVal = q.val;
     
     // If root is greater than p and q at the same time, both p and q are on the left subtree, then take 'root.left' as the root node and continue with the step 1;
-    if(left < rootVal && right < rootVal){
+    if(pVal < rootVal && qVal < rootVal){
         return lowestCommonAncestor(root.left, p, q);
     }
 
     // If root is less than p and q at the same time, both p and q are on the right subtree, then take 'root.right' as the root node and continue with the step 1;
-    else if(left > rootVal && right > rootVal){
+    else if(pVal > rootVal && qVal > rootVal){
         return lowestCommonAncestor(root.right, p, q);
     }
 
